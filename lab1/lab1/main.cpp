@@ -142,17 +142,6 @@ void draw_layout(HDC hdc, HWND hWnd, std::vector<RectLayout>& layout)
     HPEN pen, old_pen;
     HBRUSH brush, old_brush;
 
-    BLENDFUNCTION blendFunc;
-    blendFunc.BlendOp = AC_SRC_OVER;
-    blendFunc.BlendFlags = 0;
-    blendFunc.SourceConstantAlpha = 128;
-    blendFunc.AlphaFormat = 0;
-
-    RECT wndRect;
-    GetClientRect(hWnd, &wndRect);
-    int currentWidth = wndRect.right - wndRect.left;
-    int currentHeight = wndRect.bottom - wndRect.top;
-
     for (size_t i = 0; i < layout.size(); i++) 
     {
         int rect_left = layout[i].rect.left     * scale;
