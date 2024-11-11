@@ -63,10 +63,14 @@ void open_file(HWND hWnd, std::vector<RectLayout>& layout)
 
     if (GetOpenFileName(&ofn))
     {
+
         std::fstream in_file(ofn.lpstrFile);
         if (in_file.is_open())
         {
+            layout_max_x = 0;
+            layout_max_y = 0;
             layout.clear();
+
             std::string line;
             RectLayout line_rect;
             while (std::getline(in_file, line))

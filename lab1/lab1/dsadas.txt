@@ -12,4 +12,8 @@ REC  55   0    6    36   METAL
 REC  9    0    6    37   METAL
 REC  25   21   7    7    METAL
 REC  73   27   38   16   METAL
-REC  154  25   47   64   METAL
+REC  75   45   46   25   METAL
+REC  37   74   43   23   METAL
+REC  8    51   39   24   METAL
+REC  34   35   36   13   METAL
+REC  4    102  51   204  METAL
