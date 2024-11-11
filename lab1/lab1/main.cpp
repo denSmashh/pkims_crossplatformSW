@@ -45,8 +45,8 @@ COLORREF current_color = METAL_COLOR;
 POINT drawing_start_point, drawing_end_point;
 
 float scale = 1.0;
-int default_scale_width = 50;
-int default_scale_height = 50;
+int layout_max_x = 0;
+int layout_max_y = 0;
 
 void open_file(HWND hWnd, std::vector<RectLayout>& layout)
 {
@@ -83,6 +83,9 @@ void open_file(HWND hWnd, std::vector<RectLayout>& layout)
                 if (line_rect.substance == "METAL") line_rect.color = METAL_COLOR;
                 else if (line_rect.substance == "POLY") line_rect.color = POLY_COLOR;
                 layout.push_back(line_rect);
+
+                layout_max_x = max(layout_max_x, line_rect.rect.right);
+                layout_max_y = max(layout_max_y, line_rect.rect.bottom);
             }
         }
         else
@@ -93,6 +96,15 @@ void open_file(HWND hWnd, std::vector<RectLayout>& layout)
 
         in_file.close();
     }
+
+    RECT clientRect;
+    GetClientRect(hWnd, &clientRect);
+    int clientWidth = clientRect.right - clientRect.left;
+    int clientHeight = clientRect.bottom - clientRect.top;
+    float scaleX = static_cast<float>(clientWidth) / layout_max_x;
+    float scaleY = static_cast<float>(clientHeight) / layout_max_y;
+    scale = min(scaleX, scaleY);
+    InvalidateRect(hWnd, nullptr, 1);
 }
 
 void save_file(HWND hWnd, std::vector<RectLayout>& layout)
@@ -144,7 +156,7 @@ void draw_layout(HDC hdc, HWND hWnd, std::vector<RectLayout>& layout)
 
     for (size_t i = 0; i < layout.size(); i++) 
     {
-        int rect_left = layout[i].rect.left     * scale;
+        int rect_left   = layout[i].rect.left   * scale;
         int rect_top    = layout[i].rect.top    * scale;
         int rect_right  = layout[i].rect.right  * scale;
         int rect_bottom = layout[i].rect.bottom * scale;
@@ -154,7 +166,7 @@ void draw_layout(HDC hdc, HWND hWnd, std::vector<RectLayout>& layout)
         FillRect(hdc, &scaledRect, hBrush);
         DeleteObject(hBrush);
 
-        for (size_t j = 0; j < layout.size(); j++) 
+        for (size_t j = 0; j < layout.size(); j++)
         {
             if (layout[i].color != layout[j].color)
             {
@@ -242,6 +254,9 @@ long __stdcall WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 
                 RECT rect = { min(start_x, end_x), min(start_y, end_y), max(start_x, end_x), max(start_y, end_y) };
 
+                layout_max_x = max(layout_max_x, drawing_rect.rect.right);
+                layout_max_y = max(layout_max_y, drawing_rect.rect.bottom);
+
                 drawing_rect.rect = rect;
                 drawing_rect.shape = "REC";
                 if (current_color == METAL_COLOR)
@@ -295,10 +310,9 @@ long __stdcall WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
         GetClientRect(hWnd, &clientRect);
         int currentWidth = clientRect.right - clientRect.left;
         int currentHeight = clientRect.bottom - clientRect.top;
-        float scaleX = static_cast<float>(currentWidth) / default_scale_width;
-        float scaleY = static_cast<float>(currentHeight) / default_scale_height;
+        float scaleX = static_cast<float>(currentWidth) / layout_max_x;
+        float scaleY = static_cast<float>(currentHeight) / layout_max_y;
         scale = min(scaleX, scaleY);
-        //InvalidateRect(hWnd, nullptr, 1);
         break;
     }
 
