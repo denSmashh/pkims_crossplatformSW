@@ -1,0 +1,6 @@
+LIBRARY "KRPO_DumperDll"
+EXPORTS
+	GetType
+	GetStringID
+	GetDumper
+	FreeDumper

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Simulator">
+      <UniqueIdentifier>{88bda417-05b7-46a0-9bb9-98f89f24310b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Simulator\bin">
+      <UniqueIdentifier>{6435e87b-4cc5-4e86-8f18-d1afe78560e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Simulator\bin\modules">
+      <UniqueIdentifier>{7e811160-0bde-4682-81c5-13337fffacd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Simulator\bin\netlists">
+      <UniqueIdentifier>{566a456e-767b-4347-b237-43b9ccd45fdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Simulator\sources">
+      <UniqueIdentifier>{b484573f-f1d6-44f4-b789-e2f4c95e2170}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator\KRPO_Simulator\sources\Netlist.cpp">
+      <Filter>Simulator\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator\KRPO_Simulator\sources\NetlistReader.cpp">
+      <Filter>Simulator\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator\KRPO_Simulator\sources\PluginManager.cpp">
+      <Filter>Simulator\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator\KRPO_Simulator\sources\Simulator.cpp">
+      <Filter>Simulator\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator\KRPO_Simulator\sources\main.cpp">
+      <Filter>Simulator\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpiceEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpiceTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\MainWindow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator\KRPO_Simulator\sources\Dumper.hpp">
+      <Filter>Simulator\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator\KRPO_Simulator\sources\Netlist.hpp">
+      <Filter>Simulator\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator\KRPO_Simulator\sources\NetlistReader.hpp">
+      <Filter>Simulator\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator\KRPO_Simulator\sources\PluginManager.hpp">
+      <Filter>Simulator\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator\KRPO_Simulator\sources\Simulator.hpp">
+      <Filter>Simulator\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator\KRPO_Simulator\sources\Solver.hpp">
+      <Filter>Simulator\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpiceEditor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimGraph.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Console.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpiceTree.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="simulator\KRPO_Simulator\bin\modules\KRPO_DumperDll.dll">
+      <Filter>Simulator\bin\modules</Filter>
+    </None>
+    <None Include="simulator\KRPO_Simulator\bin\modules\KRPO_SolverDll.dll">
+      <Filter>Simulator\bin\modules</Filter>
+    </None>
+    <None Include="simulator\KRPO_Simulator\bin\netlists\lab_3.sp">
+      <Filter>Simulator\bin\netlists</Filter>
+    </None>
+    <None Include="simulator\KRPO_Simulator\bin\netlists\rc_net.sp">
+      <Filter>Simulator\bin\netlists</Filter>
+    </None>
+    <None Include="simulator\KRPO_Simulator\bin\netlists\rr_sine.sp">
+      <Filter>Simulator\bin\netlists</Filter>
+    </None>
+  </ItemGroup>
+</Project>

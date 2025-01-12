@@ -1,0 +1,6 @@
+LIBRARY "KRPO_SolverDll"
+EXPORTS
+	GetType
+	GetStringID
+	GetSolver
+	FreeSolver
