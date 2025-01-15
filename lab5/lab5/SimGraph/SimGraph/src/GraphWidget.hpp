@@ -30,7 +30,6 @@ protected:
     QPointF toWidgetCoords(QPointF p);
     void drawGrid(float start, float end, bool vertical, bool labels, QPainter& painter, QPen& pen, QPen& penLabel);
     void paintEvent(QPaintEvent* event) override;
-    void drawInteractive(QPainter& painter);
     void zoomToRect(QPointF _p1, QPointF _p2);
     void mousePressEvent(QMouseEvent* event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
@@ -46,7 +45,6 @@ private:
     QPoint lastMousePos;
     QPoint currentMousePos = { 0, 0 };
 
-    // viewport
     QPointF offsetCenterLocal = { 0, 0 };
     QPointF scaleLocal = { 1.5, 1.5 };
 
@@ -62,7 +60,6 @@ private:
     double yMin = 0;
     double yMax = 0;
 
-    // appearance
     int leftMargin = 90;
     int bottomMargin = 40;
     int margin = 20;

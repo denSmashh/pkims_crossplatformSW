@@ -15,6 +15,7 @@ void GraphWidget::showGraph(const Graph* _graph) {
     fit();
 }
 
+// scaling graphics
 void GraphWidget::fit() {
     scaleLocal = { 1, 1 };
     offsetCenterLocal = {(xMin + xMax) / 2.f, (yMin + yMax) / 2.f };
@@ -125,8 +126,6 @@ void GraphWidget::paintEvent(QPaintEvent* event) {
       lastPoint = currentPoint;
     }
 
-    drawInteractive(painter);
-
     // Draw axis labels
     painter.setPen(QPen(Qt::white, 2, Qt::SolidLine));
     auto center = toWidgetCoords(toGlobal({0, 0})).toPoint();
@@ -153,31 +152,6 @@ void GraphWidget::paintEvent(QPaintEvent* event) {
     drawGrid(startLocal.y(), endLocal.y(), true, true, painter, gridPen1, labelPen);
 }
 
-
-void GraphWidget::drawInteractive(QPainter& painter) {
-    painter.setClipping(false);
-
-    if (zooming) {
-        painter.setPen(QPen(Qt::black));
-        // painter.setBrush(Qt::lightGray);
-        painter.drawRect(QRect(lastMousePos, currentMousePos));
-    }
-
-    if (legendVertical.contains(currentMousePos)) {
-        painter.setPen(QPen(Qt::lightGray));
-        painter.setBrush(Qt::lightGray);
-        painter.drawRect(legendVertical);
-    }
-
-    if (legendHorizontal.contains(currentMousePos)) {
-        painter.setPen(QPen(Qt::lightGray));
-        painter.setBrush(Qt::lightGray);
-        painter.drawRect(legendHorizontal);
-    }
-
-    painter.setClipping(true);
-}
-
   // plot coordinates
 void GraphWidget::zoomToRect(QPointF _p1, QPointF _p2) {
     auto p1 = toLocal(_p1);
@@ -194,25 +168,14 @@ void GraphWidget::zoomToRect(QPointF _p1, QPointF _p2) {
 }
 
 void GraphWidget::mousePressEvent(QMouseEvent* event) {
-    if (event->buttons() & Qt::LeftButton) {
-        zooming = true;
-    }
-
     if (event->buttons() & Qt::MiddleButton) {
         panning = true;
     }
-
     lastMousePos = event->pos();
 }
 
 void GraphWidget::mouseReleaseEvent(QMouseEvent* event) {
-    if (zooming) {
-        zoomToRect(toPlotCoords(lastMousePos), toPlotCoords(currentMousePos));
-    }
-
-    zooming = false;
     panning = false;
-
     update();
 }
 
@@ -250,7 +213,7 @@ MainWindow::MainWindow() : QMainWindow(nullptr), graphList(this), graphDisplay(t
     setWindowTitle("SimGraph");
     resize(800, 600);
 
-    auto* dock = new QDockWidget("Graphs", this);
+    auto* dock = new QDockWidget("Viewpoints", this);
 
     dock->setWidget(&graphList);
     dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);

@@ -281,8 +281,7 @@ void MainWindow::callbackHelpAbout() {
     QMessageBox::information(
         nullptr, 
         "About", 
-        "Developed by D. Smashnoy\n \
-        Inspired and support by the PKIMS Department :)"
+        "Developed by D. Smashnoy\nInspired and support by the PKIMS Department :)"
     );
 }
 
